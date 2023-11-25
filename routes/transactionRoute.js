@@ -4,7 +4,7 @@ const { getAllTransaction, addTransaction } = require("../controllers/transCtrl"
 
 const router = express.Router();
 
-router.get('/get-transaction',getAllTransaction);
+router.post('/get-transaction',getAllTransaction);
 
 router.post('/add-transaction',addTransaction);
 

@@ -3,10 +3,17 @@ const userModel = require('../models/userModel');
 
 const loginController = async(req,res) => {
     try {
-        const { password } = req.body;
-        const user = await userModel.findOne({ password });
+        // const { password } = req.body;
+        console.log(req.body);
+        const { username } = req.body;
+        const password = req.body.password;
+        const user = await userModel.findOne({ name:username });
+        console.log(user,username);
         if (!user) {
             return res.status(404).send('user not found');
+        }
+        else if (user.password != password) {
+            return res.status(404).send('incorrect password');
         }
         res.status(200).json({
             success:true,

@@ -1,9 +1,23 @@
 import React, { useState } from "react";
-import { Form, Input, Modal, Select } from "antd";
+import { Form, Input, Modal, Select, Spin, message } from "antd";
+import axios from "axios";
 
 const ModalForm = ({ showModal, setShowModal }) => {
-  const handleSubmit = (values) => {
-    console.log(values);
+  const [loading, setLoading] = useState(false);
+
+  const handleSubmit = async (values) => {
+    // console.log(values);
+    try {
+      const user = JSON.parse(localStorage.getItem('user'));
+      setLoading(true);
+      await axios.post('/transaction/add-transaction',{...values, userid:user._id});
+      setLoading(false);
+      message.success('Transaction Added Successfully');
+      setShowModal(false);
+    } catch (error) {
+      setLoading(false);
+      message.error('Failed Transaction');
+    }
   };
   const filterOption = (input, option) =>
     option.label.toLowerCase().includes(input.toLowerCase());
@@ -14,6 +28,7 @@ const ModalForm = ({ showModal, setShowModal }) => {
       onCancel={() => setShowModal(false)}
       footer={false}
     >
+    {loading && <Spin/>}
       <Form layout="vertical" onFinish={handleSubmit}>
         <Form.Item label="Amount" name="amount">
           <Input type="text" />

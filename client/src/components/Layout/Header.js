@@ -1,11 +1,12 @@
 import { message } from "antd";
 import React from "react";
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [loginUser, setLoginUser] = useState("");
+  const navigate = useNavigate();
 
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("user"));
@@ -17,11 +18,13 @@ export const Header = () => {
   const logoutHandler = () => {
     localStorage.removeItem("user");
     message.success("Logout Successfully");
-    window.location.reload();
+    // window.location.reload();
+    navigate("/login");
+
   };
 
   return (
-    <div className="bg-white dark:bg-gray-900 ">
+    <div className="bg-white dark:bg-gray-900">
       <div className="px-4 py-5 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
         <div className="relative flex items-center justify-between">
           <Link
@@ -114,7 +117,7 @@ export const Header = () => {
               </svg>
             </button>
             {isMenuOpen && (
-              <div className="absolute top-0 left-0 w-full">
+              <div className="absolute top-0 left-0 w-full z-40">
                 <div className="p-5 bg-white dark:bg-teal-300 rounded shadow-lg">
                   <div className="flex items-center justify-between mb-4">
                     <div>
