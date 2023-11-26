@@ -2,34 +2,50 @@ import React, { useState } from "react";
 import { Form, Input, Modal, Select, Spin, message } from "antd";
 import axios from "axios";
 
-const ModalForm = ({ showModal, setShowModal }) => {
+const ModalForm = ({ showModal, setShowModal, editable, setEditable }) => {
   const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (values) => {
     // console.log(values);
     try {
-      const user = JSON.parse(localStorage.getItem('user'));
+      const user = JSON.parse(localStorage.getItem("user"));
       setLoading(true);
-      await axios.post('/transaction/add-transaction',{...values, userid:user._id});
-      setLoading(false);
-      message.success('Transaction Added Successfully');
+      if (editable) {
+        await axios.post("/transaction/edit-transaction", {
+          payload:{
+            ...values,
+          userid: user._id,
+          },
+          transactionId:editable._id
+        });
+        setLoading(false);
+        message.success("Transaction Updated Successfully");
+      } else {
+        await axios.post("/transaction/add-transaction", {
+          ...values,
+          userid: user._id,
+        });
+        setLoading(false);
+        message.success("Transaction Added Successfully");
+      }
       setShowModal(false);
+      setEditable(null);
     } catch (error) {
       setLoading(false);
-      message.error('Failed Transaction');
+      message.error("Failed Transaction");
     }
   };
   const filterOption = (input, option) =>
     option.label.toLowerCase().includes(input.toLowerCase());
   return (
     <Modal
-      title="Add Transaction"
+      title={editable ? "Edit Transaction" : "Add Transaction"}
       open={showModal}
       onCancel={() => setShowModal(false)}
       footer={false}
     >
-    {loading && <Spin/>}
-      <Form layout="vertical" onFinish={handleSubmit}>
+      {loading && <Spin />}
+      <Form layout="vertical" onFinish={handleSubmit} initialValues={editable}>
         <Form.Item label="Amount" name="amount">
           <Input type="text" />
         </Form.Item>

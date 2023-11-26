@@ -9,8 +9,9 @@ const DashbordPage = () => {
   const [allTransaction, setAllTransaction] = useState([]);
   const [mTransaction, setMTransaction] = useState([]);
   const [wTransaction, setWTransaction] = useState([]);
-  var frequency = "30"; 
-  const type ="all";
+  const categories = ["food", "medical", "fund", "rent", "fee", "other"];
+  var frequency = "30";
+  const type = "all";
 
   //All Transaction
   const totalTransaction = allTransaction.length;
@@ -23,7 +24,6 @@ const DashbordPage = () => {
   const totalIncomePersent = (totalIncomeTransaction / totalTransaction) * 100;
   const totalExpensePersent =
     (totalExpenseTransaction / totalTransaction) * 100;
-
 
   const totalTurnover = allTransaction.reduce(
     (acc, transaction) => acc + transaction.amount,
@@ -85,7 +85,7 @@ const DashbordPage = () => {
           frequency,
           type,
         });
-        frequency="7";
+        frequency = "7";
         const resW = await axios.post("/transaction/get-transaction", {
           userid: user._id,
           frequency,
@@ -150,6 +150,46 @@ const DashbordPage = () => {
             sv={totalMExpenseTurnoverPersent}
             className="w-full md:w-1/2 lg:w-1/3"
           />
+        </div>
+          <h5 className="text-center font-bold mt-4">CategoryWise Analysis</h5>
+        <div
+          className="mt-3 mb-28 md:mb-8"
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fill, minmax(48%, 1fr))",
+            gap: "16px",
+          }}
+        >
+          {categories.map((category) => {
+            const incomeTransactionsForCategory = allTransaction.filter(
+              (transaction) =>
+                transaction.type === "expense" &&
+                transaction.category === category
+            );
+
+            const amount =
+              incomeTransactionsForCategory.length > 0
+                ? incomeTransactionsForCategory.reduce(
+                    (acc, transaction) => acc + transaction.amount,
+                    0
+                  )
+                : 0;
+
+            return (
+              amount > 0 && (
+                <div className="card" key={category}>
+                  <div className="card-body">
+                    <p>{category}</p>
+                    <Progress
+                      percent={((amount / totalExpenseTurnover) * 100).toFixed(
+                        0
+                      )}
+                    />
+                  </div>
+                </div>
+              )
+            );
+          })}
         </div>
       </div>
     </Layout>
