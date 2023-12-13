@@ -19,7 +19,17 @@ const app = express();
 //middleware
 app.use(morgan('dev'));
 app.use(express.json());
-app.use(cors());
+app.use(cors(
+    {
+        origin:[""],
+        methods:['POST','GET'],
+        credentials: true
+    }
+));
+
+app.get("/", (req,res) => {
+    res.json("Hello");
+})
 
 //routes
 app.use('/api/v1/users',require('./routes/userRoute'));
