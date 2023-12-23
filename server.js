@@ -26,10 +26,10 @@ app.use(cors());
 // })
 
 //routes
-app.use("/api/v1/users", require("./routes/userRoute"));
+app.use("/users", require("./routes/userRoute"));
 
 //transaction
-app.use("/api/v1/transaction", require("./routes/transactionRoute"));
+app.use("/transaction", require("./routes/transactionRoute"));
 
 // // static files
 // app.use(express.static(path.join(__dirname, '/client/build')));
