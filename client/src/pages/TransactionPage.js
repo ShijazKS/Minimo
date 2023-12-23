@@ -3,7 +3,6 @@ import { Layout } from "../components/Layout/Layout";
 import { FaTrashAlt, FaPlus } from "react-icons/fa";
 import { Form, Input, Modal, Select, Spin, message } from "antd";
 import ModalForm from "../components/ModalForm";
-import axios from "axios";
 import TransactionList from "../components/TransactionList";
 
 const TransactionPage = () => {
