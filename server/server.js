@@ -19,17 +19,17 @@ const app = express();
 //middleware
 app.use(morgan("dev"));
 app.use(express.json());
-app.use(cors(
-  {
+app.use(
+  cors({
     origin: ["https://minimo-six.vercel.app"],
-    methods: ['POST','GET'],
-    credentials: true
-  }
-));
+    methods: ["POST", "GET"],
+    credentials: true,
+  })
+);
 
-// app.get("/", (req,res) => {
-//     res.json("Hello");
-// })
+app.get("/", (req, res) => {
+  res.json("Hello");
+})
 
 //routes
 app.use("/users", require("./routes/userRoute"));
@@ -37,17 +37,6 @@ app.use("/users", require("./routes/userRoute"));
 //transaction
 app.use("/transaction", require("./routes/transactionRoute"));
 
-// // static files
-// app.use(express.static(path.join(__dirname, '/client/build')));
-
-// app.get('*',function(req,res){
-//     res.sendFile(path.join(__dirname , '/client/build/index.html'));
-// });
-
-app.get("/", (req, res) => {
-  app.use(express.static(path.resolve(__dirname, "client", "build")));
-  res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
-});
 
 //port
 const PORT = 8080 || process.env.PORT;
