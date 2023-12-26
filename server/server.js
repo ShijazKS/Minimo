@@ -19,7 +19,13 @@ const app = express();
 //middleware
 app.use(morgan("dev"));
 app.use(express.json());
-app.use(cors());
+app.use(cors(
+  {
+    origin: ["https://minimo-six.vercel.app"],
+    methods: ['POST','GET'],
+    credentials: true
+  }
+));
 
 // app.get("/", (req,res) => {
 //     res.json("Hello");
