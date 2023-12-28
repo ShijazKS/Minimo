@@ -15,7 +15,6 @@ const addTransaction = async (req, res) => {
 const getAllTransaction = async (req, res) => {
   try {
     const { frequency, selectedDate, type } = req.body;
-
     // Check if frequency, selectedDate, and type are empty
     if (!frequency && !selectedDate && !type) {
       const transactions = await transModel.find({
@@ -24,9 +23,7 @@ const getAllTransaction = async (req, res) => {
       res.status(200).json(transactions);
       return; // Exit the function early
     }
-
-    console.log(frequency, selectedDate, type);
-
+    // console.log(frequency, selectedDate, type);
     const transactions = await transModel.find({
       ...(frequency !== "custom"
         ? {
@@ -43,7 +40,6 @@ const getAllTransaction = async (req, res) => {
       userid: req.body.userid,
       ...(type !== "all" && { type }),
     });
-
     res.status(200).json(transactions);
   } catch (error) {
     console.log(error);
@@ -62,7 +58,7 @@ const editTransaction = async (req, res) =>{
    console.log(error);
    res.status(500).json(error); 
   }
-}
+};
 
 const deleteTransaction = async (req, res) =>{
   try {
@@ -72,6 +68,7 @@ const deleteTransaction = async (req, res) =>{
     console.log(error);
     res.status(500).json(error);
   }
-}
+};
+
 
 module.exports = { addTransaction, getAllTransaction,editTransaction,deleteTransaction };

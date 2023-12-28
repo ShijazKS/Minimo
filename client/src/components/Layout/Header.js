@@ -20,7 +20,6 @@ export const Header = () => {
     message.success("Logout Successfully");
     // window.location.reload();
     navigate("/login");
-
   };
 
   return (
@@ -48,16 +47,26 @@ export const Header = () => {
               <rect x="14" y="1" width="7" height="6" />
               <rect x="14" y="11" width="7" height="12" />
             </svg>
-            <span className="ml-2 text-xl font-bold tracking-wide text-gray-100 uppercase">
+            <span className="ml-2 text-3xl font-bold tracking-wide text-gray-100 uppercase">
               Minimo
             </span>
           </Link>
           <ul className="flex items-center hidden space-x-8 lg:flex">
             <li>
               <Link
+                to="/"
+                aria-label="Home"
+                title="Home"
+                className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400"
+              >
+                {/* {loginUser && loginUser.name} */}Home
+              </Link>
+            </li>
+            <li>
+              <Link
                 to="/dashboard"
-                aria-label="Our product"
-                title="Our product"
+                aria-label="dashbord"
+                title="dashbord"
                 className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400"
               >
                 Dashboard
@@ -66,21 +75,11 @@ export const Header = () => {
             <li>
               <Link
                 to="/transaction"
-                aria-label="Our product"
-                title="Our product"
+                aria-label="transaction"
+                title="transaction"
                 className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400"
               >
                 Transaction
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/"
-                aria-label="Product pricing"
-                title="Product pricing"
-                className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400"
-              >
-                {loginUser && loginUser.name}
               </Link>
             </li>
             <li>
@@ -90,7 +89,7 @@ export const Header = () => {
                 title="log out"
                 onClick={logoutHandler}
               >
-                Logout
+                {/* {loginUser && loginUser.name} <img className="ml-1 w-6 h-6" src="logout.png" alt="logout" /> */} Logout
               </button>
             </li>
           </ul>
@@ -142,7 +141,7 @@ export const Header = () => {
                           <rect x="14" y="1" width="7" height="6" />
                           <rect x="14" y="11" width="7" height="12" />
                         </svg>
-                        <span className="ml-2 text-xl font-bold tracking-wide text-gray-800 uppercase">
+                        <span className="ml-2 text-3xl font-bold tracking-wide text-gray-800 uppercase">
                           Minimo
                         </span>
                       </Link>
@@ -167,10 +166,20 @@ export const Header = () => {
                     <ul className="space-y-4">
                       <li>
                         <a
+                          href="/"
+                          aria-label="Home"
+                          title="Home"
+                          className="font-semibold tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+                        >
+                          {/* {loginUser && loginUser.name} */} Home
+                        </a>
+                      </li>
+                      <li>
+                        <a
                           href="/dashboard"
-                          aria-label="Our product"
-                          title="Our product"
-                          className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+                          aria-label="dashbord"
+                          title="dashbord"
+                          className="font-semibold tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
                         >
                           Dashboard
                         </a>
@@ -178,28 +187,19 @@ export const Header = () => {
                       <li>
                         <a
                           href="/transaction"
-                          aria-label="Our product"
-                          title="Our product"
-                          className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+                          aria-label="transaction"
+                          title="transaction"
+                          className="font-semibold tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
                         >
                           Transaction
                         </a>
                       </li>
-                      <li>
-                        <a
-                          href="/"
-                          aria-label="Product pricing"
-                          title="Product pricing"
-                          className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
-                        >
-                          {loginUser && loginUser.name}
-                        </a>
-                      </li>
-                      <li className="bg-black">
+
+                      <li className=" bg-black">
                         <button
-                          className="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
-                          aria-label="Sign up"
-                          title="Sign up"
+                          className="font-semibold inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
+                          aria-label="Logout"
+                          title="Logout"
                           onClick={logoutHandler}
                         >
                           Logout

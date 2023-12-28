@@ -3,7 +3,7 @@ import { Progress } from "antd";
 
 const ProgressBar = ({mainH,mainHv,fHv,sHv,fv,sv}) => {
   return (
-    <div className="flex-col text-center shadow-lg bordered-2xl pb-8 mb-4 item-center justify-center md:ml-2 md:mr-2 w-full md:w-1/2">
+    <div className="flex-col text-center rounded-lg shadow-lg bordered-2xl pb-8 mb-4 item-center justify-center md:ml-2 md:mr-2 w-full md:w-1/2 bg-slate-50">
       <h4 className="font-bold my-2">{mainH} : {mainHv}</h4>
       <h4 className="mb-2 font-bold">
         <span className="circle"></span> Income: {fHv}{" "}

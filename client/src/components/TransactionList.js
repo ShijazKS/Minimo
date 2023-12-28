@@ -3,6 +3,7 @@ import { Button, Popconfirm, Select, Table, message, DatePicker } from "antd";
 import axios from "axios";
 import moment from "moment";
 
+import { getAllTransaction } from "../utils/TransFunctions";
 import { FaEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
 import ModalForm from "./ModalForm";
@@ -22,7 +23,7 @@ const TransactionList = () => {
   const handleDelete = async (record) => {
     try {
       setLoading(true);
-      await axios.post("https://minimo-server.onrender.com/transaction/delete-transaction", {
+      await axios.post("/transaction/delete-transaction", {
         transactionId: record._id,
       });
       message.success("Transaction Deleted!");
@@ -101,34 +102,16 @@ const TransactionList = () => {
     },
   ];
 
-  //useEfffect
+  //get all transaction
   useEffect(() => {
-    const getAlltransaction = async () => {
-      try {
-        const user = JSON.parse(localStorage.getItem("user"));
-        setLoading(true);
-        const res = await axios.post("https://minimo-server.onrender.com/transaction/get-transaction", {
-          userid: user._id,
-          frequency,
-          selectedDate,
-          type,
-        });
-        const dataWithKeys = res.data.map((item) => ({
-          ...item,
-          key: item._id,
-        }));
-        setLoading(false);
-        setAllTransaction(dataWithKeys);
-        console.log(dataWithKeys);
-        // Update the key to trigger a re-render
-        setTableKey((prevKey) => prevKey + 1);
-      } catch (error) {
-        console.log(error);
-        message.error("Fetch Issue With Transaction");
-      }
-    };
-
-    getAlltransaction();
+    getAllTransaction({
+      frequency,
+      selectedDate,
+      type,
+      setLoading,
+      setAllTransaction,
+      setTableKey,
+    });
   }, [frequency, selectedDate, type]);
 
   const rowClassName = (record) => {
