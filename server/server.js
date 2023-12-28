@@ -22,14 +22,14 @@ app.use(express.json());
 // app.use(cors());
 app.use(
   cors({
-    origin: ["https://minimo-six.vercel.app"],
+    origin: ["https://minimotracker.vercel.app"],
     methods: ["POST", "GET"],
     credentials: true,
   })
 );
 
 app.get("/", (req, res) => {
-  res.send("Hello");
+  res.send("HelloWorld");
 });
 
 //routes
