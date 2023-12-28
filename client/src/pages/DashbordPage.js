@@ -77,16 +77,16 @@ const DashbordPage = () => {
       try {
         const user = JSON.parse(localStorage.getItem("user"));
         setLoading(true);
-        const res = await axios.post("/transaction/get-transaction", {
+        const res = await axios.post("https://minimo-server.onrender.com/transaction/get-transaction", {
           userid: user._id,
         });
-        const resM = await axios.post("/transaction/get-transaction", {
+        const resM = await axios.post("https://minimo-server.onrender.com/transaction/get-transaction", {
           userid: user._id,
           frequency,
           type,
         });
         frequency = "7";
-        const resW = await axios.post("/transaction/get-transaction", {
+        const resW = await axios.post("https://minimo-server.onrender.com/transaction/get-transaction", {
           userid: user._id,
           frequency,
           type,

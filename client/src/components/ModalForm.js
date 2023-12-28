@@ -11,7 +11,7 @@ const ModalForm = ({ showModal, setShowModal, editable, setEditable }) => {
       const user = JSON.parse(localStorage.getItem("user"));
       setLoading(true);
       if (editable) {
-        await axios.post("/transaction/edit-transaction", {
+        await axios.post("https://minimo-server.onrender.com/transaction/edit-transaction", {
           payload:{
             ...values,
           userid: user._id,
@@ -21,7 +21,7 @@ const ModalForm = ({ showModal, setShowModal, editable, setEditable }) => {
         setLoading(false);
         message.success("Transaction Updated Successfully");
       } else {
-        await axios.post("/transaction/add-transaction", {
+        await axios.post("https://minimo-server.onrender.com/transaction/add-transaction", {
           ...values,
           userid: user._id,
         });

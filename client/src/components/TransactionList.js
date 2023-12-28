@@ -22,7 +22,7 @@ const TransactionList = () => {
   const handleDelete = async (record) => {
     try {
       setLoading(true);
-      await axios.post("/transaction/delete-transaction", {
+      await axios.post("https://minimo-server.onrender.com/transaction/delete-transaction", {
         transactionId: record._id,
       });
       message.success("Transaction Deleted!");
@@ -107,7 +107,7 @@ const TransactionList = () => {
       try {
         const user = JSON.parse(localStorage.getItem("user"));
         setLoading(true);
-        const res = await axios.post("/transaction/get-transaction", {
+        const res = await axios.post("https://minimo-server.onrender.com/transaction/get-transaction", {
           userid: user._id,
           frequency,
           selectedDate,

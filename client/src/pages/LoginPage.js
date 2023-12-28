@@ -11,7 +11,7 @@ const LoginPage = () => {
     // console.log("Success:", values);
     try {
       setLoading(true);
-      const { data } = await axios.post("/users/login", values);
+      const { data } = await axios.post("https://minimo-server.onrender.com/users/login", values);
       setLoading(false);
       message.success("Login Successful");
       localStorage.setItem("user", JSON.stringify({ ...data.user, password: "" }));
