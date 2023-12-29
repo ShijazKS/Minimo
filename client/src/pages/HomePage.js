@@ -55,7 +55,7 @@ const HomePage = () => {
           {/* Left Div */}
           <div className="bg-transparent lg:w-1/2 md:w-full">
             <div className=" lg:pl-8 md:pl-0 flex justify-center pt-4">
-              <h1 className="text-6xl text-center font-bold mr-3">
+              <h1 className="text-6xl text-center font-bold mr-1 md:mr-3">
                 Hello, {loginUser && loginUser.name}
               </h1>
               <img className="w-20" src="agreement.png" alt="" />
@@ -93,8 +93,8 @@ const HomePage = () => {
           {/* Right Div */}
           <div className="bg-transparent lg:w-1/2 md:w-full">
             <div className=" flex justify-center pt-8 pb-12 lg:pr-8 md:pr-0">
-              <div className="bg-amber-300 shadow-xl px-8 py-10 flex-col text-center rounded-xl">
-                <h2 className="mt-2 text-2xl font-semibold">Current Money Status</h2>
+              <div className="bg-yellow-300 shadow-xl px-8 py-10 flex-col text-center rounded-xl">
+                <h2 className="mt-2 text-2xl text-gray-600 font-semibold">Current Money Status</h2>
                 <h3
                   className={`${
                     currentStatus < 0
