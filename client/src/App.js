@@ -1,11 +1,14 @@
 import { Navigate, Route,Routes } from "react-router-dom";
-import "./App.css";
+
 import HomePage from "./pages/HomePage";
 import { AboutPage } from "./pages/AboutPage";
 import LoginPage from "./pages/LoginPage";
 import SignupPage from "./pages/SignupPage";
 import DashbordPage from "./pages/DashbordPage";
 import TransactionPage from "./pages/TransactionPage";
+import "./App.css";
+
+
 
 function App() {
   return (

@@ -14,13 +14,13 @@ const ProgressBar = ({mainH,mainHv,fHv,sHv,fv,sv}) => {
         <Progress
           type="circle"
           strokeColor={"green"}
-          percent={fv.toFixed(0)}
+          percent={!isNaN(fv) ? fv.toFixed(0) : 0}
         />
         <Progress
           className="mx-2"
           type="circle"
           strokeColor={"red"}
-          percent={sv.toFixed(0)}
+          percent={!isNaN(sv) ? sv.toFixed(0) : 0}
         />
       </div>
     </div>

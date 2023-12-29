@@ -28,18 +28,18 @@ const SignupPage = () => {
   };
 
   //prevent for login user
-  useEffect(()=>{
-    if(localStorage.getItem("user")){
+  useEffect(() => {
+    if (localStorage.getItem("user")) {
       navigate("/");
     }
-  },[navigate]);
+  }, [navigate]);
 
   return (
-    <div className="bg-blue-200 flex min-h-screen flex-col items-center justify-between p-24">
-      {/* <h1>hi</h1> */}
-      <div className="rounded-md bg-white flex justify-center w-full h-full my-auto xl:gap-14 lg:justify-normal md:gap-5 draggable py-10">
-        <div className="flex items-center justify-center w-full lg:p-12">
-          <div className="flex iteoms-center xl:p-10">
+    <div className="signup-page flex min-h-screen flex-col items-center justify-between md:p-20 md:py-36 py-20 ">
+      <div className="sign bg-gradient-to-r from-amber-500 to-pink-500 shadow-xl p-4 rounded-lg bg-white">
+        <div className="py-10 bg-white rounded-xl md:px-8">
+          <h2 className="font-bold text-3xl text-center mb-4">Sign Up</h2>
+          <div className="px-8">
             <Form
               name="basic"
               labelCol={{
@@ -59,22 +59,6 @@ const SignupPage = () => {
               autoComplete="off"
               layout="vertical"
             >
-              <h3 className="mb-3 text-4xl font-extrabold text-center text-dark-grey-900">
-                Sign Up
-              </h3>
-              <a className="flex items-center justify-center w-full py-4 mb-6 text-sm font-medium transition duration-300 rounded-2xl text-gray-900 bg-gray-100 hover:bg-gray-300  focus:ring-4 focus:ring-gray-300">
-                <img
-                  className="h-5 mr-2"
-                  src="https://raw.githubusercontent.com/Loopple/loopple-public-assets/main/motion-tailwind/img/logos/logo-google.png"
-                  alt=""
-                />
-                Sign up with Google
-              </a>
-              <div className="flex items-center mb-3">
-                <hr className="h-0 border-b border-solid border-gray-400 grow" />
-                <p className="mx-4 text-gray-500">or</p>
-                <hr className="h-0 border-b border-solid border-gray-400 grow" />
-              </div>
               <Form.Item
                 label="Username"
                 name="name"
@@ -98,37 +82,25 @@ const SignupPage = () => {
                   },
                 ]}
               >
-                <Input.Password size="large" />
+                 <Input.Password size="large" />
               </Form.Item>
-
-              {/* <Form.Item
-                name="remember"
-                valuePropName="checked"
-                wrapperCol={{
-                  offset: 0,
-                  span: 24,
-                }}
-              >
-                <Checkbox>Remember me</Checkbox>
-              </Form.Item> */}
 
               <Form.Item
                 wrapperCol={{
-                  offset: 8,
-                  span: 16,
+                  xs: { span: 16, offset: 7 },
+                  md: { span: 16, offset: 9 }, // Medium screen offset
                 }}
               >
                 <Button
                   type="primary"
                   size="large"
-                  // disabled='true'
                   htmlType="submit"
                   className="text-sm font-bold leading-none text-white transition duration-300 hover:bg-purple-700 focus:ring-4 focus:ring-purple-100 bg-purple-500"
                 >
-                  Register {loading && <Spin/>}
+                  Register {loading && <Spin />}
                 </Button>
               </Form.Item>
-              <p className="text-sm text-center leading-relaxed text-gray-900">
+              <p className="text-md text-center leading-relaxed text-gray-900">
                 Already registered ?{" "}
                 <Link to="/login" className="font-bold text-blue-700">
                   Sign In

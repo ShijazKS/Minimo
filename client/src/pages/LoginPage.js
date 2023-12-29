@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Button, Checkbox, Form, Input, Spin, message } from "antd";
 import { UserOutlined } from "@ant-design/icons";
 import { Link, useNavigate } from "react-router-dom";
@@ -14,7 +14,10 @@ const LoginPage = () => {
       const { data } = await axios.post("/users/login", values);
       setLoading(false);
       message.success("Login Successful");
-      localStorage.setItem("user", JSON.stringify({ ...data.user, password: "" }));
+      localStorage.setItem(
+        "user",
+        JSON.stringify({ ...data.user, password: "" })
+      );
       navigate("/");
     } catch (error) {
       setLoading(false);
@@ -25,17 +28,18 @@ const LoginPage = () => {
     console.log("Failed:", errorInfo);
   };
 
-  useEffect(()=>{
-    if(localStorage.getItem("user")){
+  useEffect(() => {
+    if (localStorage.getItem("user")) {
       navigate("/");
     }
-  },[navigate]);
+  }, [navigate]);
 
   return (
-    <div className="bg-red-200 flex min-h-screen flex-col items-center justify-between px-24">
-      <div className="rounded-md bg-white flex justify-center w-full h-full my-auto xl:gap-14 lg:justify-normal md:gap-5 draggable py-10">
-        <div className="flex items-center justify-center w-full lg:p-12">
-          <div className="flex items-center xl:p-10">
+    <div className="login-page flex min-h-screen flex-col items-center justify-between md:p-20 md:py-36 py-20 ">
+      <div className="sign bg-gradient-to-r from-fuchsia-500 to-cyan-500 shadow-lg p-4 rounded-lg bg-white">
+        <div className="py-10 bg-white rounded-xl md:px-8">
+          <h2 className="font-bold text-3xl text-center mb-4">Sign In</h2>
+          <div className="px-8">
             <Form
               name="basic"
               layout="vertical"
@@ -55,22 +59,6 @@ const LoginPage = () => {
               onFinishFailed={onFinishFailed}
               autoComplete="off"
             >
-              <h3 className="mb-3 text-4xl font-extrabold text-center text-dark-grey-900">
-                Sign In
-              </h3>
-              <a className="flex items-center justify-center w-full py-4 mb-6 text-sm font-medium transition duration-300 rounded-2xl text-gray-900 bg-gray-100 hover:bg-gray-300  focus:ring-4 focus:ring-gray-300">
-                <img
-                  className="h-5 mr-2"
-                  src="https://raw.githubusercontent.com/Loopple/loopple-public-assets/main/motion-tailwind/img/logos/logo-google.png"
-                  alt=""
-                />
-                Sign in with Google
-              </a>
-              <div className="flex items-center mb-3">
-                <hr className="h-0 border-b border-solid border-gray-400 grow" />
-                <p className="mx-4 text-gray-500">or</p>
-                <hr className="h-0 border-b border-solid border-gray-400 grow" />
-              </div>
               <Form.Item
                 label="Username"
                 name="username"
@@ -110,20 +98,20 @@ const LoginPage = () => {
 
               <Form.Item
                 wrapperCol={{
-                  offset: 8,
-                  span: 16,
+                  xs: { span: 16, offset: 8 },
+                  md: { span: 16, offset: 9 },
                 }}
               >
                 <Button
                   type="primary"
                   size="large"
                   htmlType="submit"
-                  className="text-sm font-bold leading-none text-white transition duration-300 hover:bg-purple-700 focus:ring-4 focus:ring-purple-100 bg-purple-500"
+                  className="text-sm font-bold leading-none text-white transition duration-300 hover:bg-purple-700 focus:ring-4 focus:ring-purple-100 bg-purple-500 p-2"
                 >
-                  Sign In {loading && <Spin/>}
+                  Sign In {loading && <Spin />}
                 </Button>
               </Form.Item>
-              <p className="text-sm text-center leading-relaxed text-gray-900">
+              <p className="text-md text-center leading-relaxed text-gray-900">
                 Not registered yet?{" "}
                 <Link to="/signup" className="font-bold text-blue-700">
                   Create an Account

@@ -19,8 +19,8 @@ const FeatureSection = () => {
           />
         </svg>
       ),
-      title: "Fast Refresh",
-      desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec congue, nisl eget molestie varius, enim ex faucibus purus.",
+      title: "Real-time",
+      desc: "Experience the power of real-time financial tracking. Our platform ensures that you have instant access to the latest updates on your income, expenses, and overall financial health, providing you with timely insights for proactive decision-making. Stay in control with up-to-the-minute data at your fingertips.",
     },
     {
       icon: (
@@ -40,7 +40,7 @@ const FeatureSection = () => {
         </svg>
       ),
       title: "Analytics",
-      desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec congue, nisl eget molestie varius, enim ex faucibus purus.",
+      desc: "Gain valuable insights into your financial behavior with our analytics feature. Track spending patterns, visualize trends, and make informed decisions to achieve your financial goals.",
     },
     {
       icon: (
@@ -60,7 +60,7 @@ const FeatureSection = () => {
         </svg>
       ),
       title: "Datacenter security",
-      desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec congue, nisl eget molestie varius, enim ex faucibus purus.",
+      desc: "Ensuring the highest level of protection for your valuable data, our datacenter security is equipped with state-of-the-art measures including biometric access controls, 24/7 surveillance, and advanced encryption protocols. Rest easy knowing that your information is safeguarded against any potential threats or breaches.",
     },
     {
       icon: (
@@ -79,8 +79,8 @@ const FeatureSection = () => {
           />
         </svg>
       ),
-      title: "Build on your terms",
-      desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec congue, nisl eget molestie varius, enim ex faucibus purus.",
+      title: "Build Your Financial Future",
+      desc: "Empower yourself to construct a personalized financial future with our platform. Tailor your financial journey, set your own goals, and achieve milestones at your pace, ensuring a financial experience built uniquely on your terms.",
     },
     {
       icon: (
@@ -100,7 +100,7 @@ const FeatureSection = () => {
         </svg>
       ),
       title: "Safe to use",
-      desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec congue, nisl eget molestie varius, enim ex faucibus purus.",
+      desc: "Rest assured, our platform prioritizes user security with robust measures such as end-to-end encryption, regular security audits, and compliance with industry standards. Your data's confidentiality and integrity are paramount, making our service a secure choice for managing your financial information.",
     },
     {
       icon: (
@@ -120,7 +120,7 @@ const FeatureSection = () => {
         </svg>
       ),
       title: "Flexible",
-      desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec congue, nisl eget molestie varius, enim ex faucibus purus.",
+      desc: "Adaptable to your unique financial needs, our platform offers flexibility in budget customization, spending categories, and personalized financial goals. Tailor the experience to suit your lifestyle, providing a seamless and personalized approach to managing your finances.",
     },
   ];
 

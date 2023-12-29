@@ -1,12 +1,13 @@
 import { message } from "antd";
 import React from "react";
 import { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate ,useLocation } from "react-router-dom";
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [loginUser, setLoginUser] = useState("");
   const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("user"));
@@ -57,9 +58,11 @@ export const Header = () => {
                 to="/"
                 aria-label="Home"
                 title="Home"
-                className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400"
+                className={`text-xl text-gray-100 duration-200 hover:text-teal-accent-400 ${
+        location.pathname === "/" ? "font-bold text-amber-200" : ""
+      } tracking-wide transition-colors active:text-amber-100`}
               >
-                {/* {loginUser && loginUser.name} */}Home
+                Home
               </Link>
             </li>
             <li>
@@ -67,7 +70,9 @@ export const Header = () => {
                 to="/dashboard"
                 aria-label="dashbord"
                 title="dashbord"
-                className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400"
+                className={`text-xl text-gray-100 duration-200 hover:text-teal-accent-400 ${
+        location.pathname === "/dashboard" ? "font-bold text-amber-200" : ""
+      } tracking-wide transition-colors active:text-amber-100`}
               >
                 Dashboard
               </Link>
@@ -77,14 +82,16 @@ export const Header = () => {
                 to="/transaction"
                 aria-label="transaction"
                 title="transaction"
-                className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400"
+                className={`text-xl text-gray-100 duration-200 hover:text-teal-accent-400 ${
+        location.pathname === "/transaction" ? "font-bold text-amber-200" : ""
+      } tracking-wide transition-colors active:text-amber-100`}
               >
                 Transaction
               </Link>
             </li>
             <li>
               <button
-                className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
+                className="font-semibold text-lg hover:text-red-400 inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
                 aria-label="Log out"
                 title="log out"
                 onClick={logoutHandler}
@@ -127,7 +134,7 @@ export const Header = () => {
                         className="inline-flex items-center"
                       >
                         <svg
-                          className="w-8 text-deep-purple-accent-400"
+                          className="w-8 text-amber-400"
                           viewBox="0 0 24 24"
                           strokeLinejoin="round"
                           strokeWidth="2"
@@ -169,9 +176,9 @@ export const Header = () => {
                           href="/"
                           aria-label="Home"
                           title="Home"
-                          className="font-semibold tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+                          className={`font-semibold hover:text-yellow-200 tracking-wide   ${location.pathname === "/" ? "text-purple-700 " : " text-slate-700 " }transition-colors duration-200 `}
                         >
-                          {/* {loginUser && loginUser.name} */} Home
+                           Home
                         </a>
                       </li>
                       <li>
@@ -179,7 +186,7 @@ export const Header = () => {
                           href="/dashboard"
                           aria-label="dashbord"
                           title="dashbord"
-                          className="font-semibold tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+                          className={`font-semibold hover:text-yellow-200 tracking-wide   ${location.pathname === "/dashboard" ? "text-purple-700 " : " text-slate-700 "}transition-colors duration-200 `}
                         >
                           Dashboard
                         </a>
@@ -189,7 +196,7 @@ export const Header = () => {
                           href="/transaction"
                           aria-label="transaction"
                           title="transaction"
-                          className="font-semibold tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+                          className={`font-semibold hover:text-yellow-200 tracking-wide   ${location.pathname === "/transaction" ? "text-purple-700 " : " text-slate-700 "}transition-colors duration-200 `}
                         >
                           Transaction
                         </a>
@@ -197,7 +204,7 @@ export const Header = () => {
 
                       <li className=" bg-black">
                         <button
-                          className="font-semibold inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
+                          className="font-semibold inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white hover:text-red-400 transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
                           aria-label="Logout"
                           title="Logout"
                           onClick={logoutHandler}
